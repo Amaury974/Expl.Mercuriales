@@ -18,10 +18,23 @@ ui <- fluidPage(
     sidebarPanel(
       
       # ~~~~{    logo / nom appli    }~~~~
+      # tags$img(
+      #   src = "CA_LA REUNION_H_CMJN.png",
+      #   alt = "logo chambre d'agriculture de La Réunion",
+      #   height = '90px'
+      #   # style = 'position: absolute;
+      #   # top: 0px; left: 50%;
+      #   # transform: translate(-50%, -10%) ;
+      #   # z-index: 9000; ',
+      #   # height = '50px'
+      # ),      
       tags$img(
-        src = "CA_LA REUNION_H_CMJN.png",
-        alt = "logo chambre d'agriculture de La Réunion",
-        height = '90px'
+        src = "des-legumes.png",
+        alt = "image cageot de légumes",
+        height = '90px',
+        style= 'display: block;
+  margin-left: auto;
+  margin-right: auto;'
         # style = 'position: absolute;
         # top: 0px; left: 50%;
         # transform: translate(-50%, -10%) ;
@@ -29,10 +42,12 @@ ui <- fluidPage(
         # height = '50px'
       ),
       
+      
       tags$p(
         "> Expl. Mercuriales",
         style = "font-family: Lucida Console;
-        font-size: 20px;"
+        font-size: 20px;
+        text-align: center;"
         # style = 'position: absolute;
         # top: 40px; left: 50%;
         # transform: translate(-50%, 0%) ;
@@ -67,10 +82,10 @@ ui <- fluidPage(
       
       tags$div(style = "font-size: 0.85em;",
                tags$i(
-                 "L'ensemble des données présentées dans cet outil sont issues des",
-                 tags$a('Mercuriales', href = 'https://daaf.reunion.agriculture.gouv.fr/les-mercuriales-r49.html'),
-                 "produites par l'Agreste (DAAF).",
-                 br(),
+                 #            "L'ensemble des données présentées dans cet outil sont issues des",
+                 #            tags$a('Mercuriales', href = 'https://daaf.reunion.agriculture.gouv.fr/les-mercuriales-r49.html'),
+                 #            "produites par l'Agreste (DAAF).",
+                 #            br(),
                  "Seuls les produits d'origine réunionnaise ayant plus de 5 mesures sont montrés ici."),
       ),
     ),
@@ -95,9 +110,19 @@ ui <- fluidPage(
   tags$div(
     style = "max-width: 1100px; margin: 0 auto; padding: 0 10px; font-size: 0.85em;",  # Réduit la taille de police de 15%
     
-    h4("📧 Contacts"),
+    
     fluidRow(
       column(4,
+             tags$img(
+               src = "CA_LA REUNION_H_CMJN.png",
+               alt = "logo chambre d'agriculture de La Réunion",
+               # style = 'transform: translate(0%, -20%)',
+               height = '100px'
+             ),
+      ),
+      
+      column(4,
+             h4("📞 Contacts"),
              tags$p(
                tags$strong("Développement et extraction des données"),
                tags$br(),
@@ -110,42 +135,36 @@ ui <- fluidPage(
              ),
       ),
       column(4,
-             # tags$p(
-             #   tags$strong("Référent des données"),
-             #   tags$br(),
-             #   '###### ##### - ###########################',
-             #   tags$br(),
-             #   "Email: ", tags$a("contact@reunion.chambagri.fr", 
-             #                     href = "mailto:contact@reunion.chambagri.fr"),
-             #   tags$br(),
-             #   "Tél: +262 XXX XXX XXX "
+             h4("🗃️️ Données"),
+             tags$p(#style = "magin-bottom: 0",
+               tags$strong(tags$a('Mercuriales', href = 'https://daaf.reunion.agriculture.gouv.fr/les-mercuriales-r49.html')),
+               tags$br(), "Agreste (DAAF)",
              # ),
-      ), 
-      column(4,
-             tags$img(
-               src = "CA_LA REUNION_H_CMJN.png",
-               alt = "logo chambre d'agriculture de La Réunion",
-               style = 'transform: translate(0%, -20%)',
-               height = '100px'
-             ),
+              tags$small(style="line-height: 1; display: block; margin-top: -1em;",
+                      tags$br(),"Service de l'Information Statistique et Economique",
+                      tags$br(), "Unité Conjoncture et mercuriales"),
+
+             )
       )
-    ),
-  ),
-  # Bas de page
-  hr(style = "margin-top: 10px; margin-bottom: 5px;"),
-  
-  tags$div(
-    style = "max-width: 1100px; margin: 0 auto; padding: 0 10px; font-size: 0.85em;",  # Réduit la taille de police de 15%
+      
+    ), 
     
-    tags$footer(
-      style = "text-align: center; color: #666; padding: 5px;",
-      tags$p(
-        "© 2026 - Chambre d'Agriculture de La Réunion | ",
-        "Version 1.0 | ",
-        "Dernière mise à jour: Janvier 2026"
-      )
+  ),
+# Bas de page
+hr(style = "margin-top: 10px; margin-bottom: 5px;"),
+
+tags$div(
+  style = "max-width: 1100px; margin: 0 auto; padding: 0 10px; font-size: 0.85em;",  # Réduit la taille de police de 15%
+  
+  tags$footer(
+    style = "text-align: center; color: #666; padding: 5px;",
+    tags$p(
+      "© 2026 - Chambre d'Agriculture de La Réunion | ",
+      "Version 1.0 | ",
+      "Dernière mise à jour: Janvier 2026"
     )
   )
-  
-  
+)
+
+
 )
