@@ -3,7 +3,8 @@ Basé sur une extraction des mercuriales de l'Agreste.
 
 <h4>Utilisation :</h4>
 <ol> 
-  <li>installation packages.R</li> 
-  <li> Run.bat</li>
+  <li>exécuter installation packages.R</li> 
+  <li>modifier Run.bat pour flécher l'emplacement de R sur l'ordinateur
+  <li>exécuter Run.bat</li>
 </ol>
-Vous pouvez aussi utiliser l'icône pour créer un joli raccourcit.
+Vous pouvez aussi utiliser l'icône pour créer un joli raccourci.
