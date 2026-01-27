@@ -1,5 +1,6 @@
-<h2>Évolution des prix des denrées alimentaires vendues à La Réunion.</h2>
-Basé sur une extraction des mercuriales de l'Agreste.
+<h2>Expl.Mercuriales</h2>
+Exploration de l'évolution des prix des denrées alimentaires agricoles produites et venudues à La Réunion. 
+Basé sur les mercuriales produites par DAAF (données publiques).
 
 <h4>Utilisation :</h4>
 <ol> 
