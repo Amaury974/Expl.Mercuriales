@@ -1,4 +1,4 @@
-<h2>Evolution des prix des denrées alimentaires vendues à La Réunion.</h2>
+<h2>Évolution des prix des denrées alimentaires vendues à La Réunion.</h2>
 Basé sur une extraction des mercuriales de l'Agreste.
 
 <h4>Utilisation :</h4>
