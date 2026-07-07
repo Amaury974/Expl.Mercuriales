@@ -29,7 +29,7 @@ library(dplyr); options(dplyr.summarise.inform = FALSE)
 cat('>> GLOBAL > Data\n')
 
 # df_mercuriales <- read.csv2('../Extraction Mercuriales/data/df_mercuriales 2022-2025.csv')
-df_mercuriales <- read.csv2('data/df_mercuriales 2022-2025.csv')
+df_mercuriales <- read.csv2('data/df_mercuriales.csv')
 
 df_mercuriales$Semaine <- as.Date(df_mercuriales$Semaine)
 df_mercuriales <- arrange(df_mercuriales, Produit)

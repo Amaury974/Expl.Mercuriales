@@ -1,0 +1,13 @@
+concombre : prix stable avec pics courts après cyclones
+banane : prix stables avec pics longs après cyclones
+
+ananas moyen : prix baisse avant les cyclones mais ne monte pas tellement après.
+chouchou : saisonnalité claire, sans interruption de prod. creux de prod concomitant des cyclones -> moins affecté.
+
+letchi : saisonnalité extrême
+tangor : saisonnalité forte avec influence faible sur les prix
+
+gingembre : tendance prix à la baisse
+
+
+pbm d'ajustement : mangue jose

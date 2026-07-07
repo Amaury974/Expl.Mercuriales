@@ -83,19 +83,19 @@ fg_mercuriale <- function(Produit_X, Marche_X, lissage){
   if(lissage){
     
     groupe_N <- df_mercuriales_X2 %>%
-    group_by(Groupe)%>%
-    summarise(N=length(Marche))
-  
+      group_by(Groupe)%>%
+      summarise(N=length(Marche))
+
     i=1
     i=4
     for(i in 1:4){
-      
+
       span_i <- c(0.06, 0.1, 0.4, 0.8)[i]
       N_i <- c(100, 50, 15, 1)[i]
-      
+
       groupe_i <- filter(groupe_N, N >= N_i)$Groupe
       groupe_N <- filter(groupe_N, N < N_i)
-      
+
     graph <-
       graph +
       geom_smooth(data = filter(df_mercuriales_X2, Groupe %in% groupe_i),
@@ -107,24 +107,55 @@ fg_mercuriale <- function(Produit_X, Marche_X, lissage){
                 )
     }
     
+    
+    # # approche 2
+    # df_lissage <- data.frame()
+    # 
+    # groupe_i = unique(df_mercuriales_X2$Groupe)[1]
+    # for(groupe_i in unique(df_mercuriales_X2$Groupe)){
+    #   df_mercuriales_X2_i <- filter(df_mercuriales_X2, Groupe %in% groupe_i)
+    # 
+    #   lissage_i <-
+    #     with(df_mercuriales_X2_i,lisser_serie(as.numeric(Semaine), Prix))
+    # 
+    #   df_lissage <- data.frame(X = lissage_i$x,
+    #                            Y = lissage_i$y,
+    #                            Groupe = groupe_i,
+    #                            Marche = df_mercuriales_X2_i[1, 'Marche']) %>%
+    #     bind_rows(df_lissage)
+    # 
+    # }
+    # 
+    # graph <-
+    #   graph +
+    #   geom_line(data = df_lissage,
+    #             aes(x = X,
+    #                 y = Y,
+    #                 # color = Marche,
+    #                 group = Groupe),
+    #             color = 'red',
+    #             linewidth = 1)
+    # ##
+    
+    
     # les points sont colorés
     graph <- graph + 
-    geom_point(aes(color = Marche),
-               size = 0.5, 
-               shape = 16)
+      geom_point(aes(color = Marche),
+                 size = 0.5, 
+                 shape = 16)
     
   }else{
     graph <- graph +
       geom_line(aes(color = Marche, group = Groupe), linewidth = 1) +
       geom_point(aes(fill = Fiabilite), size = 0.5, shape = 21, color = 'transparent') +
       scale_fill_manual(values = c('fiable' = 'black', 'peu fiable' = 'grey'))
-      
+    
   }
   
   
   graph <- graph + 
     scale_color_manual(values = palette_marche) +
-   
+    
     # ~~~~{    Mise en forme    }~~~~ #
     theme(legend.position = "bottom") +
     guides(color = guide_legend(ncol = 2),
@@ -142,4 +173,42 @@ fg_mercuriale <- function(Produit_X, Marche_X, lissage){
 
 
 
+
+
+lisser_serie <- function(x, y, n_out = 300) {
+  n <- length(unique(x))
+  
+  if (n < 4) {
+    # Trop peu de points pour un lissage statistique : interpolation simple
+    xs <- seq(min(x), max(x), length.out = n_out)
+    ys <- approx(x, y, xout = xs)$y
+    methode <- "interpolation linéaire (n < 4)"
+  } else if (n < 8) {
+    # Peu de points : spline d'interpolation douce, pas de lissage statistique
+    xs <- seq(min(x), max(x), length.out = n_out)
+    ys <- spline(x, y, xout = xs, method = "natural")$y
+    methode <- "spline d'interpolation (n < 8)"
+  } else {
+    # Assez de points : lissage avec choix automatique du paramètre par CV
+    fit <- tryCatch(
+      smooth.spline(x, y, cv = TRUE),
+      error = function(e) smooth.spline(x, y, cv = FALSE) # fallback si CV échoue
+    )
+    xs <- seq(min(x), max(x), length.out = n_out)
+    ys <- predict(fit, xs)$y
+    methode <- paste0("smooth.spline (spar=", round(fit$spar, 2), ")")
+  }
+  
+  list(x = xs, y = ys, methode = methode)
+}
+# 
+# set.seed(1)
+# x <- 1:60
+# y <- c(rep(5, 15), 5 + cumsum(rnorm(15, 0.3, 0.5)), rep(10, 15), 10 - cumsum(rnorm(15, 0.2, 1)))
+# 
+# res <- lisser_serie(x, y)
+# cat(res$methode, "\n")
+# 
+# plot(x, y, pch = 16, col = "grey40")
+# lines(res$x, res$y, col = "steelblue", lwd = 2)
 
