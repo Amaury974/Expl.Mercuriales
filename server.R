@@ -26,7 +26,7 @@ server <- function(input, output) {
   selected_marche <- reactive(input$marche)
   selected_lissage <- reactive(input$lissage)
   
-  output$g_mercuriale  <- renderPlot({
+  output$g_mercuriale  <- renderGirafe({
     # cat('>> SERVER > render\n')
     
     # Couleur <- produits_col[produits_col$Produit == input$produit, 'Couleur_hex']

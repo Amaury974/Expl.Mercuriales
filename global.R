@@ -17,8 +17,8 @@ cat('>> GLOBAL > Packages\n')
 
 library(shiny)
 
-library(ggplot2); theme_set(theme_minimal(base_size=20)) # graphiques
-
+library(ggplot2); theme_set(theme_minimal()) # graphiques
+library(ggiraph)
 library(dplyr); options(dplyr.summarise.inform = FALSE)
 
 # library(shinyWidgets) utilisé avec :: 

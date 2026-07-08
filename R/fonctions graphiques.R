@@ -138,22 +138,18 @@ fg_mercuriale <- function(Produit_X, Marche_X, lissage){
     # ##
     
     
-    # les points sont colorés
-    graph <- graph + 
-      geom_point(aes(color = Marche),
-                 size = 0.5, 
-                 shape = 16)
-    
   }else{
     graph <- graph +
-      geom_line(aes(color = Marche, group = Groupe), linewidth = 1) +
-      geom_point(aes(fill = Fiabilite), size = 0.5, shape = 21, color = 'transparent') +
-      scale_fill_manual(values = c('fiable' = 'black', 'peu fiable' = 'grey'))
+      geom_line(aes(color = Marche, group = Groupe), linewidth = 1) 
     
   }
   
   
-  graph <- graph + 
+  graph <- graph +
+    geom_point_interactive(aes(fill = Fiabilite,
+                               tooltip = paste0(Marche,'\nsemaine du ', format(Semaine, '%d/%m/%Y'),'\n', Prix, '€')), 
+                           size = 0.5, shape = 21, color = 'transparent') +
+    scale_fill_manual(values = c('fiable' = 'black', 'peu fiable' = 'grey')) + 
     scale_color_manual(values = palette_marche) +
     
     # ~~~~{    Mise en forme    }~~~~ #
@@ -167,7 +163,11 @@ fg_mercuriale <- function(Produit_X, Marche_X, lissage){
          y = 'Prix (€)',
          color= 'Marché')
   
-  graph
+  
+  interactive_plot <- girafe(ggobj = graph,
+                             width_svg = 8, height_svg=5)
+  interactive_plot
+  
 }
 
 

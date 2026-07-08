@@ -96,75 +96,75 @@ ui <- fluidPage(
     mainPanel(
       br(),br(),br(),
       
-      plotOutput('g_mercuriale', height = '600px')
+      girafeOutput('g_mercuriale')
     ),
     
   ),
-  #  ¤¤¤¤¤¤¤¤¤¤                         ¤¤                         ¤¤¤¤¤¤¤¤¤¤  #
-  #####                             BAS DE PAGE                            #####
-  #  ¤¤¤¤¤¤¤¤¤¤                         ¤¤                         ¤¤¤¤¤¤¤¤¤¤  #
-  # Espacement avant le footer
-  br(),
-  hr(),
-  
-  tags$div(
-    style = "max-width: 1100px; margin: 0 auto; padding: 0 10px; font-size: 0.85em;",  # Réduit la taille de police de 15%
-    
-    
-    fluidRow(
-      column(4,
-             tags$img(
-               src = "CA_LA REUNION_H_CMJN.png",
-               alt = "logo chambre d'agriculture de La Réunion",
-               # style = 'transform: translate(0%, -20%)',
-               height = '100px'
-             ),
-      ),
-      
-      column(4,
-             h4("📞 Contacts"),
-             tags$p(
-               tags$strong("Développement et extraction des données"),
-               tags$br(),
-               "Amaury Jorant - Direction Prospective, Projets et Partenariats",
-               tags$br(),
-               "Email: ", tags$a("amaury.jorant@reunion.chambagri.fr",
-                                 href = "mailto:amaury.jorant@reunion.chambagri.fr"),
-               tags$br(),
-               "Tél: +262 262 944 628"
-             ),
-      ),
-      column(4,
-             h4("🗃️️ Données"),
-             tags$p(#style = "magin-bottom: 0",
-               tags$strong(tags$a('Mercuriales', href = 'https://daaf.reunion.agriculture.gouv.fr/les-mercuriales-r49.html')),
-               tags$br(), "Agreste (DAAF)",
-             # ),
-              tags$small(style="line-height: 1; display: block; margin-top: -1em;",
-                      tags$br(),"Service de l'Information Statistique et Economique",
-                      tags$br(), "Unité Conjoncture et mercuriales"),
-
-             )
-      )
-      
-    ), 
-    
-  ),
-# Bas de page
-hr(style = "margin-top: 10px; margin-bottom: 5px;"),
-
-tags$div(
-  style = "max-width: 1100px; margin: 0 auto; padding: 0 10px; font-size: 0.85em;",  # Réduit la taille de police de 15%
-  
-  tags$footer(
-    style = "text-align: center; color: #666; padding: 5px;",
-    tags$p(
-      "© 2026 - Chambre d'Agriculture de La Réunion | ",
-      "Version 1.0 | ",
-      "Dernière mise à jour: Janvier 2026"
-    )
-  )
-)
+#   #  ¤¤¤¤¤¤¤¤¤¤                         ¤¤                         ¤¤¤¤¤¤¤¤¤¤  #
+#   #####                             BAS DE PAGE                            #####
+#   #  ¤¤¤¤¤¤¤¤¤¤                         ¤¤                         ¤¤¤¤¤¤¤¤¤¤  #
+#   # Espacement avant le footer
+#   br(),
+#   hr(),
+#   
+#   tags$div(
+#     style = "max-width: 1100px; margin: 0 auto; padding: 0 10px; font-size: 0.85em;",  # Réduit la taille de police de 15%
+#     
+#     
+#     fluidRow(
+#       column(4,
+#              tags$img(
+#                src = "CA_LA REUNION_H_CMJN.png",
+#                alt = "logo chambre d'agriculture de La Réunion",
+#                # style = 'transform: translate(0%, -20%)',
+#                height = '100px'
+#              ),
+#       ),
+#       
+#       column(4,
+#              h4("📞 Contacts"),
+#              tags$p(
+#                tags$strong("Développement et extraction des données"),
+#                tags$br(),
+#                "Amaury Jorant - Direction Prospective, Projets et Partenariats",
+#                tags$br(),
+#                "Email: ", tags$a("amaury.jorant@reunion.chambagri.fr",
+#                                  href = "mailto:amaury.jorant@reunion.chambagri.fr"),
+#                tags$br(),
+#                "Tél: +262 262 944 628"
+#              ),
+#       ),
+#       column(4,
+#              h4("🗃️️ Données"),
+#              tags$p(#style = "magin-bottom: 0",
+#                tags$strong(tags$a('Mercuriales', href = 'https://daaf.reunion.agriculture.gouv.fr/les-mercuriales-r49.html')),
+#                tags$br(), "Agreste (DAAF)",
+#              # ),
+#               tags$small(style="line-height: 1; display: block; margin-top: -1em;",
+#                       tags$br(),"Service de l'Information Statistique et Economique",
+#                       tags$br(), "Unité Conjoncture et mercuriales"),
+# 
+#              )
+#       )
+#       
+#     ), 
+#     
+#   ),
+# # Bas de page
+# hr(style = "margin-top: 10px; margin-bottom: 5px;"),
+# 
+# tags$div(
+#   style = "max-width: 1100px; margin: 0 auto; padding: 0 10px; font-size: 0.85em;",  # Réduit la taille de police de 15%
+#   
+#   tags$footer(
+#     style = "text-align: center; color: #666; padding: 5px;",
+#     tags$p(
+#       "© 2026 - Chambre d'Agriculture de La Réunion | ",
+#       "Version 1.0 | ",
+#       "Dernière mise à jour: Janvier 2026"
+#     )
+#   )
+# )
 
 
 )

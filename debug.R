@@ -30,89 +30,15 @@ for(script_i in list.files('R', pattern = '.+R$')) {
 #                                                                              #
 ### ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ ###
 
-selected_Com <- 'Saint-Pierre'
-selected_Com <- 'Saint-Philippe'
-# selected_Com <- 'Entre-Deux'
-# selected_Com <- "L'Étang-Salé"
-selected_Com <- 'Le Tampon'
-selected_Com <- 'Saint-Paul'
+selected_produit <- unique(df_mercuriales$Produit)[24]
+selected_marche <- tout_marche[1]
+selected_lissage <- TRUE
 
 
 
-### ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ ###
-#                                                                              #
-####                        CHARGEMENT DES DONNÉES                          ####
-#                                                                              #
-### ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ ###
-
-
-
-# interco
-selected_interco_lib <- filter(df_communes, Commune == selected_Com)$EPCI
-selected_interco_com <- filter(df_communes, EPCI == selected_interco_lib)$Commune
-selected_interco_num <- filter(df_communes, EPCI == selected_interco_lib)%>%nrow()
-
-palette_zone <- f_palette(selected_Com, selected_interco_lib)
-
-df_resume_commune <- f_resume_commune(N_SAU_com, 
-                                   selected_Com, 
-                                   selected_interco_com, 
-                                   selected_interco_lib)
-
-df_resume_label <- f_resume_commune_label(df_resume_commune, selected_Com)
-
-df_resume_culture <- f_resume_culture(df_culture, 
-                                   selected_Com, 
-                                   selected_interco_com, 
-                                   selected_interco_lib,
-                                   selected_interco_num)
-
-df_resume_cheptel <- f_resume_betiole(df_cheptel, 
-                                selected_Com, 
-                                selected_interco_com, 
-                                selected_interco_lib,
-                                selected_interco_num)
-
-N_expl_comm <- filter(N_SAU_com, Commune == selected_Com, annee == 2020)$n_exploit
-
-
-
-
-### ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ ###
-#                                                                              #
-####                                Figures                               ####
-#                                                                              #
-### ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ ###
-
-fg_global_sau_et_n(df_resume_commune, df_resume_label, selected_Com)
-
-fg_veg_SAU(df_resume_culture, selected_Com)
-fg_veg_N(df_resume_culture, selected_Com)
-
-filter(df_resume_culture, An == 2020) %>%
-  select(Zone, Culture, SAU, Nbr.Exp = N) %>%
-  pivot_wider(Culture, 
-              names_from = Zone,
-              names_sep = ' ',
-              values_from = c(SAU, Nbr.Exp), ) %>%
-
-  arrange(Culture)
-
-
-
-
-fg_anim_ugb(df_resume_cheptel, selected_Com)
-fg_anim_N(df_resume_cheptel, selected_Com)
-
-
-
-
-
-
-
-
-
-
+fg_mercuriale(Produit_X = selected_produit, 
+              Marche_X = selected_marche, 
+              lissage = selected_lissage)
 
 
 
